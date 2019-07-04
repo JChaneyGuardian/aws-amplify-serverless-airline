@@ -47,38 +47,54 @@ Shows all the changes done to the files during the commits of an episode.
 Contains all the notes he had in his "Untitled.md" file while he was talking. 
 https://github.com/aws-samples/aws-serverless-airline-booking/pulls?utf8=%E2%9C%93&q=is%3Apr
 
+## NVM - Node Version Manager
+**NOTE:** You should not need this.
 
-## Install Amplify and Amplify CLI
-`npm install -g @aws-amplify/cli`
+I had some issues with amplify on my home machine.  I noticed he does a `nvm use 8.10` in the video.  
+NVM allows you to install multiple versions of Node and switch between them.  Here is some information
+about it, however, if you don't need it I would avoid this complication until you are comfortable with
+using Node.
 
-**NOTE:** After installing the amplify cli, some of us were getting an error that `amplify` was a valid command.  We had to manually add 
-`C:\Users\`_{your user id}_`\AppData\Roaming\npm` to our Environment PATH.
+https://davidwalsh.name/nvm 
+https://github.com/coreybutler/nvm-windows  -- Windows version
+https://github.com/nvm-sh/nvm/blob/master/README.md  -- Mac only
+
+`wmic os get osarchitecture` -- allows you to find the architecture version proably 64-bit.
+
+`nvm install 8.10 64-bit`
 
 `amplify configure`
 
-# Episode 0
-## @16:49 
-`amplify init`
-`npm i aws-amplify-vue`
+## Initialize node modules
+This command will load the npm libaries already set by the original author.
+`npm install`  
 
-`amplify auth add`
+This should install aws-amplify and aws-amplify-vue.
 
+This command will install the amplify command line interface on your computer
+`npm install -g @aws-amplify/cli`
 
-# Episode 1
+ ## Install Amplify CLI
+**NOTE:** After installing the amplify cli, some of us were getting an error that `amplify` was a valid command.  We had to manually add 
+`C:\Users\`_{your user id}_`\AppData\Roaming\npm` to our Environment PATH.
+
 
 ## CI/CD with GitHub
+Create a GitHub account if you want to play with CI/CD, you will need to setup your own Git hub repository to link to.
 
-### Create a GitHub account if you want to play with CI/CD
 https://github.com/
 
-Create a repository and copy the url for cloning the repo to your clipboard
-### Rename the original remote 
-Rename the repo you originally pulled the source from "aws-examples: aws-serverless-airline" to a new name
+Create a repository and copy the Clone url of the repo to your clipboard
+
+### Rename the origin remote 
+Rename the repo you originally pulled the source from "aws-examples: aws-serverless-airline" to a new name such as aws-examples.
 `git remote rename origin aws-examples`
 
 ### Add the remote to your local repo
 `git remote set-url --add origin` _{paste the url for your repo here}_
 
-Now when you fetch, pull or push the remote repo will be your new repo instead of the original aws-samples/aws-serverless-airline-booking repo on git hub.
+Now when you fetch, pull or push the remote repo will be your new repo instead of the original 
+aws-samples/aws-serverless-airline-booking repo on git hub.  If your git client asks you to choose, 
+simply choose "origin" remote.
 
 
