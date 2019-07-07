@@ -1,5 +1,7 @@
 import Flight from "../../shared/models/FlightClass";
 import axios from "axios";
+import Amplify, {API, graphqlOperation} from "aws-amplify";
+import {listFlights }from "../../graphql/queries";
 
 /**
  *
@@ -34,8 +36,35 @@ export function fetchFlights({ commit }, { date, departure, arrival }) {
   return new Promise(async (resolve, reject) => {
     commit("SET_LOADER", true);
     try {
-      const { data: flightData } = await axios.get("/mocks/flights.json");
-      const flights = flightData.map(flight => new Flight(flight));
+      //onst { data: flightData } = await axios.get("/mocks/flights.json");
+      // flight filter
+      const formattedDate = date.slice(-4) + "-" + date.slice(3, 5) + "-" + date.slice(0, 2);
+      //console.log(date, formattedDate);
+      const flightFilter = {
+        filter: {
+          departureDate: {
+            beginsWith:formattedDate
+          },
+          departureAirportCode: {
+            eq: departure
+          },
+          arrivalAirportCode: {
+            eq: arrival
+          }
+        }
+      };
+      //console.log(flightFilter);
+      // graphQL API
+      const {
+        data: {
+          listFlights: {
+            items: flightDataApi
+          }
+        }
+      } = await API.graphql(graphqlOperation(listFlights, flightFilter));
+      console.log(flightDataApi);
+
+      const flights = flightDataApi.map(flight => new Flight(flight));
 
       commit("SET_FLIGHTS", flights);
       commit("SET_LOADER", false);

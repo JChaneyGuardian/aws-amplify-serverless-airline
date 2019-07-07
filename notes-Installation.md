@@ -79,22 +79,6 @@ This command will install the amplify command line interface on your computer
 `C:\Users\`_{your user id}_`\AppData\Roaming\npm` to our Environment PATH.
 
 
-## CI/CD with GitHub
-Create a GitHub account if you want to play with CI/CD, you will need to setup your own Git hub repository to link to.
 
-https://github.com/
-
-Create a repository and copy the Clone url of the repo to your clipboard
-
-### Rename the origin remote 
-Rename the repo you originally pulled the source from "aws-examples: aws-serverless-airline" to a new name such as aws-examples.
-`git remote rename origin aws-examples`
-
-### Add the remote to your local repo
-`git remote set-url --add origin` _{paste the url for your repo here}_
-
-Now when you fetch, pull or push the remote repo will be your new repo instead of the original 
-aws-samples/aws-serverless-airline-booking repo on git hub.  If your git client asks you to choose, 
-simply choose "origin" remote.
 
 
