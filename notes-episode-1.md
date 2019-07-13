@@ -10,6 +10,7 @@ be a benefit to look at that before starting the videos.
 # Episode 1
 Pull Request Notes: https://github.com/aws-samples/aws-serverless-airline-booking/pull/2
 
+[Build on Serverless | S2 E1 : Youtube video](https://www.youtube.com/watch?v=qBN98Co_0aw)
 
 ## Initialize amplify environment
 **NOTE:** Make sure you are on an episode0 commit/branch otherwise much of this will have already been done 
