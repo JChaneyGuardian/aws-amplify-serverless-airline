@@ -2,7 +2,9 @@
 
 
 # Episode 3
-His notes from pull request: https://github.com/aws-samples/aws-serverless-airline-booking/pull/11
+[Pull request](https://github.com/aws-samples/aws-serverless-airline-booking/pull/11)
+
+[Build on Serverless | S2 E3 : Youtube video](https://www.youtube.com/watch?v=3OjI9Yn8nXw)
 
 Nadit recaps the overview and setup up to @9:00
 
