@@ -1,7 +1,9 @@
 
 
 # Episode 2
-Pull Request: https://github.com/aws-samples/aws-serverless-airline-booking/pull/3
+[Pull Request](https://github.com/aws-samples/aws-serverless-airline-booking/pull/3)
+
+[Build on Serverless | S2 E2 : Youtube video](https://www.youtube.com/watch?v=QaVP0TxgevQ)
 
 ## CI/CD with GitHub
 If you want to play with CI/CD, (@5:10), you will need to setup your own Git Hub repository to link to.  
