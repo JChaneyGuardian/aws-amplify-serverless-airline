@@ -22,6 +22,35 @@ They did a lot of work prior to the episode to create a cloud formation
 template that they simply push at this point in the video.  The rest of 
 the video is simply using the resources they created with the template.
 
+### Files from this episode
+These are the files they commited to their repo for this episode.  The put them under "src/backend/booking".
+The aws command below needs to be run from the folder where you put the "template.yaml" with the python
+source files in a "src" folder under that. 
+
+[template.yaml](https://github.com/aws-samples/aws-serverless-airline-booking/blob/b9f4e33dd36f007f3f4e5b71631e646484cda99d/src/backend/booking/template.yaml)
+
+[src/collect.py](https://github.com/aws-samples/aws-serverless-airline-booking/blob/b9f4e33dd36f007f3f4e5b71631e646484cda99d/src/backend/booking/src/collect.py)
+
+[src/confirm.py](https://github.com/aws-samples/aws-serverless-airline-booking/blob/b9f4e33dd36f007f3f4e5b71631e646484cda99d/src/backend/booking/src/confirm.py)
+
+[src/refund.py](https://github.com/aws-samples/aws-serverless-airline-booking/blob/b9f4e33dd36f007f3f4e5b71631e646484cda99d/src/backend/booking/src/refund.py)
+
+
+````
+aws cloudformation package \
+    --template-file template.yaml \
+    --output-template-file packaged.yaml \
+    --s3-bucket {S3 bucket you created for this} \
+    --profile {your chosen profile probably "default"}
+
+aws cloudformation deploy \
+    --template-file packaged.yaml \
+    --stack-name process-booking-state-machine \
+    --capabilities CAPABILITY_IAM,CAPABILITY_AUT_EXPAND \
+    --parameter-overrides BookingTable={Booking table from DynamoDb} FlightTable={Flight table from DynamoDb} \
+    --profile {your chosen profile probably "default"}
+
+
 ## Stripe API 
 They deploy a Stripe API written by the guest @14:00, I don't think you need that. I think we can stub that out.
 
