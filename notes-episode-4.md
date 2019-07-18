@@ -102,10 +102,56 @@ aws cloudformation deploy \
 ## Create role to run the step function
 Switch to the AWS AIM UI @29:20
 
+Policy as json
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "states:StartExecution"
+            ],
+            "Resource": [
+                "{copy the arn of your new Step function}"
+            ],
+            "Effect": "Allow"
+        }
+    ]
+}
+```
+
 Copies the right Resource name for the policy @31:50
 
 ## Create the DataSource in Appsync that calls your Step function
 @33:20
+
+**NOTE:** Update the region in your endpoint and signingInRegion.
+
+**File:** *state-machine-datasource.json*
+
+I created this file in the "src/backend/booking" folder, because that's
+where my current directory was.
+```json
+{
+    "endpoint": "https://states.{region}.amazonaws.com",
+    "authorizationConfig": {
+        "authorizationType": "AWS_IAM",
+        "awsIamConfig": {
+            "signingRegion": "{region}",
+            "signingServiceName": "states"
+        }
+    }
+}
+```
+
+````bash
+aws appsync create-data-source --api-id {api id } \
+    --name ProcessBookingStateMachine \
+    --type HTTP \
+    --http-config file://state-machine-datasource.json \
+    --service-role-arn {created in just previous step} \
+    --profile default
+````
 
 ## Create function to call step function
 [gist example code](https://gist.github.com/heitorlessa/51325686df06836f2fc062201364e7b0#gistcomment-2917981)

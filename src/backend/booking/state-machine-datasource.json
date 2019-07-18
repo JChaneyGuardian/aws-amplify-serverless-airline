@@ -1,0 +1,10 @@
+{
+    "endpoint": "https://states.us-east-2.amazonaws.com",
+    "authorizationConfig": {
+        "authorizationType": "AWS_IAM",
+        "awsIamConfig": {
+            "signingRegion": "us-east-2",
+            "signingServiceName": "states"
+        }
+    }
+}
