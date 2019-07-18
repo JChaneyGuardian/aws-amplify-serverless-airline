@@ -1,0 +1,16 @@
+StepFunctionsHttpDataSource:
+    Type: AWS::AppSync::DataSource
+    Properties:
+      ApiId: qsrcydkin5bqjd5skjlgnu6uiu
+      Name: ProcessBookingStateMachine
+      Description: Step Functions HTTP
+      Type: HTTP
+      # IAM role defined elsewhere in AWS CloudFormation template
+      ServiceRoleArn: arn:aws:iam::693392992871:policy/AppSyncToStepFunctions
+      HttpConfig:
+        Endpoint: !Sub https://states.${AWS::Region}.amazonaws.com/
+        AuthorizationConfig:
+          AuthorizationType: AWS_IAM
+          AwsIamConfig:
+            SigningRegion: !Ref AWS::Region
+            SigningServiceName: states
