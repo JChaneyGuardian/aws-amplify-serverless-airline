@@ -148,7 +148,7 @@ where my current directory was.
 aws appsync create-data-source --api-id {api id } \
     --name ProcessBookingStateMachine \
     --type HTTP \
-    --http-config file://state-machine-datasource.json \
+    --http-config file://{path to file/}state-machine-datasource.json \
     --service-role-arn {created in just previous step} \
     --profile default
 ````
@@ -162,14 +162,47 @@ He walks through the code in the GIST @36:40
 
 @41:25 Attaches the function to the pipeline resolver for procesBooking
 
+When you paste the code from the Gist make sure you replace the "stateMachineArn" with the value you used
+in the state-machine-datasource.json as the Resource.  You will also need to update the values of the
+bookingTable and flightTable properties to match yours.
+
+I had lost my "Before mapping template".  I just used the one from the previous episode.
+````javascript
+$util.qr($ctx.stash.put("outboundFlightId", $ctx.args.input.bookingOutboundFlightId))
+$util.qr($ctx.stash.put("paymentToken", $ctx.args.input.paymentToken))
+$util.qr($ctx.stash.put("customer", $ctx.identity.sub))
+{}
+````
+
 @41:45 they talk about how the Schema has been updated to take the new response
 type from processBooking, but, I don't remember them actually updating the 
 schema.
 
+I entered directly into the Schema in Appsync as he shows in the video
+
+I changed the return type processBookingOutput mutation and added this type.
+
+````graphql
+type processBookingOutput {
+  id:ID
+  status: String
+}
+````
+
 ## Test it
  @42:25 they test the new functions through the AppSync Query Interface
 
-same query as before
+Make sure you use a flight id that has some seats available.
+````graphql
+ mutation ProcessBooking {
+  processBooking(input :{
+    paymentToken:"token",
+    bookingOutboundFlightId: "{flight ID}"
+  }) {
+    id
+  }
+}
+````
  
  @44:27 go to step function state machine and debug the process.
  @46:20 debug the error that caused the failure
