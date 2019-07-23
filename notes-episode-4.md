@@ -62,13 +62,13 @@ source to simply always return a success response.
 Here are the files from my repo.  If you look at the history you can see the simple changes
 I made to the files.  I am not a python programmer (yet :) ) 
 
-[template.yaml](https://github.com/JChaneyGuardian/aws-amplify-serverless-airline/tree/personal/episode3/src/backend/booking/template.yaml)
+[template.yaml](https://github.com/JChaneyGuardian/aws-amplify-serverless-airline/tree/personal/episode4/src/backend/booking/template.yaml)
 
-[src/collect.py](hhttps://github.com/JChaneyGuardian/aws-amplify-serverless-airline/tree/personal/episode3/src/backend/booking/src/collect.py)
+[src/collect.py](https://github.com/JChaneyGuardian/aws-amplify-serverless-airline/tree/personal/episode4/src/backend/booking/src/collect.py)
 
-[src/confirm.py](https://github.com/JChaneyGuardian/aws-amplify-serverless-airline/tree/personal/episode3/src/backend/booking/src/confirm.py)
+[src/confirm.py](https://github.com/JChaneyGuardian/aws-amplify-serverless-airline/tree/personal/episode4/src/backend/booking/src/confirm.py)
 
-[src/refund.py](https://github.com/JChaneyGuardian/aws-amplify-serverless-airline/tree/personal/episode3/src/backend/booking/src/refund.py)
+[src/refund.py](https://github.com/JChaneyGuardian/aws-amplify-serverless-airline/tree/personal/episode4/src/backend/booking/src/refund.py)
 
 
 ### S3 Bucket
