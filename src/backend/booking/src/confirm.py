@@ -13,7 +13,7 @@ def generate_booking_reference(length):
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=length))
 
 def lambda_handler(event, context):
-    dynamodb = boto3.resource("dynamodb", region_name='eu-west-2')
+    dynamodb = boto3.resource("dynamodb", region_name='us-east-2')
     table = dynamodb.Table(os.environ['BOOKING_TABLE_NAME'])
     return_val = error_string.format('Unknown error.')
 
