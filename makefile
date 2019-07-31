@@ -12,7 +12,7 @@ init: ##=> Install OS deps, python3.6 and dev tools
 	@$(MAKE) _install_os_packages
 
 outputs: ##=> Fetch SAM stack outputs and save under /tmp
-	$(MAKE) outputs.payment
+	#$(MAKE) outputs.payment
 
 outputs.payment: ##=> Fetch SAM stack outputs
 	 aws cloudformation describe-stacks --stack-name $${STACK_NAME}-payment-$${AWS_BRANCH} --query 'Stacks[0].Outputs' --region $${AWS_REGION} > /tmp/payment-stack.json
@@ -22,7 +22,7 @@ outputs.vue: ##=> Converts Payments output stack to Vue env variables
 
 deploy: ##=> Deploy services
 	$(info [*] Deploying...)
-	$(MAKE) deploy.payment
+	#$(MAKE) deploy.payment
 	$(MAKE) deploy.booking
 
 deploy.booking: ##=> Deploy booking service using SAM
