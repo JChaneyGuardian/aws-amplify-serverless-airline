@@ -70,6 +70,7 @@ deploy.payment: ##=> Deploy payment service using SAM
 
 _install_os_packages:
 	$(info [*] Installing Python and OS deps...)
+	yum list | grep python3
 	yum install jq python36 python36-devel python36-pip -y
 	$(info [*] Upgrading Python PIP, and installing SAM CLI and CloudFormation linter...)
 	python36 -m pip install --upgrade pip cfn-lint aws-sam-cli
