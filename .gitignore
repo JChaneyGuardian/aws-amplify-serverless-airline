@@ -35,3 +35,4 @@ node_modules/
 aws-exports.js
 awsconfiguration.json
 **/packaged.yaml
+scratch.md
